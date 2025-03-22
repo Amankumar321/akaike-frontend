@@ -14,7 +14,7 @@ company = st.text_input("Enter a company name:", "")
 if st.button("Analyze News"):
     if company:
         with st.spinner("Loading..."):
-            response = requests.get(API_URL, params={"company": company}, stream=True)
+            response = requests.get(API_URL + "/analyze-company-news", params={"company": company}, stream=True)
 
             if response.status_code == 200:
                 for line in response.iter_lines():
@@ -58,7 +58,7 @@ if st.button("Analyze News"):
 
                         if "audio" in data:
                             st.subheader("Hindi Audio Summary")
-                            st.audio(os.path.join(API_URL, data["audio"]))
+                            st.audio(API_URL + data["audio"])
 
             else:
                 st.error("Failed to retrieve data. Please try again.")
