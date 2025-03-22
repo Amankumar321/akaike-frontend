@@ -14,7 +14,7 @@ company = st.text_input("Enter a company name:", "")
 if st.button("Analyze News"):
     if company:
         with st.spinner("Loading..."):
-            response = requests.get(API_URL + "/analyze-company-news", params={"company": company}, stream=True)
+            response = requests.get(API_URL + "analyze-company-news", params={"company": company}, stream=True)
 
             if response.status_code == 200:
                 for line in response.iter_lines():
