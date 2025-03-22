@@ -58,7 +58,7 @@ if st.button("Analyze News"):
 
                         if "audio" in data:
                             st.subheader("Hindi Audio Summary")
-                            st.audio(data["audio"])
+                            st.audio(os.path.join(API_URL, data["audio"]))
 
             else:
                 st.error("Failed to retrieve data. Please try again.")
